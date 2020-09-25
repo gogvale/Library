@@ -1,3 +1,5 @@
+let myLibrary = [];
+
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
@@ -14,38 +16,51 @@ function Book(title, author, pages, read) {
   };
 }
 function renderStatus(li) {
-  li.children[0].innerHTML = li.book.info();
+  li.children[0];
 }
-function addBookToLibrary(book) {
+
+function refreshBooks() {
   ul = document.querySelector("ul");
-  li = document.createElement("li");
-  li.book = book;
+  ul.innerHTML = "";
 
-  p = document.createElement("p");
-  li.appendChild(p);
-  renderStatus(li);
+  myLibrary.forEach((book, index) => {
+    li = document.createElement("li");
+    li.book = book;
+    li.arrayIndex = index;
 
-  button1 = document.createElement("button");
-  button1.innerHTML = "Change Status";
-  button1.classList.add("change");
-  button1.onclick = (self) => {
-    li = self.target.parentElement;
-    li.book.readBook();
-    renderStatus(li);
-  };
+    p = document.createElement("p");
+    p.innerHTML = li.book.info();
+    li.appendChild(p);
 
-  button2 = document.createElement("button");
-  button2.innerHTML = "Delete Book";
-  button2.classList.add("remove");
-  button2.onclick = (self) => {
-    li = self.target.parentElement;
-    li.parentElement.removeChild(li);
-  };
+    button1 = document.createElement("button");
+    button1.innerHTML = "Change Status";
+    button1.classList.add("change");
+    button1.onclick = (self) => {
+      li = self.target.parentElement;
+      li.book.readBook();
+      refreshBooks();
+    };
 
-  li.appendChild(button1);
-  li.appendChild(button2);
+    button2 = document.createElement("button");
+    button2.innerHTML = "Delete Book";
+    button2.classList.add("remove");
+    button2.onclick = (self) => {
+      li = self.target.parentElement;
+      removedBook = myLibrary.splice(li.arrayIndex, 1)[0];
+      console.log(`Removed "${removedBook.title}"`);
+      refreshBooks();
+    };
 
-  ul.appendChild(li);
+    li.appendChild(button1);
+    li.appendChild(button2);
+
+    ul.appendChild(li);
+  });
+}
+
+function addBookToLibrary(book) {
+  myLibrary.push(book);
+  refreshBooks();
 }
 function addNewBook() {
   // Get form values
