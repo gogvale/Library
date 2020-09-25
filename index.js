@@ -13,7 +13,6 @@ function Book(title, author, pages, read) {
     this.read = !this.read;
   };
 }
-
 function renderStatus(li) {
   li.children[0].innerHTML = li.book.info();
 }
@@ -26,19 +25,27 @@ function addBookToLibrary(book) {
   li.appendChild(p);
   renderStatus(li);
 
-  button = document.createElement("button");
-  button.innerHTML = "Change Status";
-  button.onclick = (self) => {
+  button1 = document.createElement("button");
+  button1.innerHTML = "Change Status";
+  button1.classList.add("change");
+  button1.onclick = (self) => {
     li = self.target.parentElement;
     li.book.readBook();
     renderStatus(li);
   };
 
-  li.appendChild(button);
-  // add li to ul
-  ul.appendChild(li);
+  button2 = document.createElement("button");
+  button2.innerHTML = "Delete Book";
+  button2.classList.add("remove");
+  button2.onclick = (self) => {
+    li = self.target.parentElement;
+    li.parentElement.removeChild(li);
+  };
 
-  return ul;
+  li.appendChild(button1);
+  li.appendChild(button2);
+
+  ul.appendChild(li);
 }
 function addNewBook() {
   // Get form values
@@ -50,13 +57,13 @@ function addNewBook() {
 
   fields = [title, author, pages, read];
 
-  const theHobbit = new Book(
+  const book = new Book(
     title.value,
     author.value,
     +pages.value,
     read.value == "true"
   );
 
-  addBookToLibrary(theHobbit);
+  addBookToLibrary(book);
   fields.forEach((el) => (el.value = ""));
 }
