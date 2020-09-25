@@ -1,0 +1,25 @@
+form {
+  background-color: gray;
+  border: solid 10px black;
+}
+
+form {
+  visibility: hidden;
+  position: absolute;
+  width: 30vw;
+  display: flex;
+  padding: 1em;
+  flex-direction: column;
+  margin: 2em auto;
+}
+
+form {
+  position: fixed;
+  top: 2rem;
+  left: 20rem;
+}
+form > * {
+  margin-top: 0.5rem;
+  height: 2.5rem;
+  padding-left: 0.75em;
+}

@@ -9,12 +9,23 @@
 
   <body>
     <h1>Books</h1>
+    <button
+      onclick="document.querySelector('form').style.visibility = 'visible'"
+    >
+      New Book
+    </button>
     <div>
       <ul></ul>
       <form>
         <input type="text" name="title" id="title" placeholder="Title" />
         <input type="text" name="author" id="author" placeholder="Author" />
-        <input type="number" name="pages" id="pages" placeholder="#Pages" />
+        <input
+          type="number"
+          name="pages"
+          id="pages"
+          min="0"
+          placeholder="#Pages"
+        />
         <select name="read" id="read">
           <option value="" disabled selected hidden>Status</option>
           <option value="true">Read</option>
