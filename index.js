@@ -40,11 +40,23 @@ function addBookToLibrary(book) {
 
   return ul;
 }
-const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
-// console.log(theHobbit.info());
+function addNewBook() {
+  // Get form values
+  const form = document.querySelector("form");
+  const title = form.title,
+    author = form.author,
+    pages = form.pages,
+    read = form.read;
 
-addBookToLibrary(theHobbit);
-addBookToLibrary(theHobbit);
-addBookToLibrary(theHobbit);
-addBookToLibrary(theHobbit);
-addBookToLibrary(theHobbit);
+  fields = [title, author, pages, read];
+
+  const theHobbit = new Book(
+    title.value,
+    author.value,
+    +pages.value,
+    read.value == "true"
+  );
+
+  addBookToLibrary(theHobbit);
+  fields.forEach((el) => (el.value = ""));
+}

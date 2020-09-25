@@ -9,7 +9,19 @@
 
   <body>
     <h1>Books</h1>
-    <ul></ul>
+    <div>
+      <ul></ul>
+      <form>
+        <input type="text" name="title" id="title" placeholder="Title" />
+        <input type="text" name="author" id="author" placeholder="Author" />
+        <input type="number" name="pages" id="pages" placeholder="#Pages" />
+        <select name="read" id="read">
+          <option value="true">Read</option>
+          <option value="false">Not Read</option>
+        </select>
+        <input onclick="addNewBook()" type="button" value="Add Book" />
+      </form>
+    </div>
   </body>
   <script src="index.js"></script>
 </html>
