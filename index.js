@@ -81,5 +81,9 @@ function addNewBook() {
 
   addBookToLibrary(book);
   fields.forEach((el) => (el.value = ""));
+  toggleVisibility();
+}
+
+function toggleVisibility() {
   document.querySelector("form").style.visibility = "hidden";
 }

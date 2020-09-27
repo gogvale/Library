@@ -4,20 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
-    <h1>Books</h1>
+    <h1>My Library</h1>
     <button
       onclick="document.querySelector('form').style.visibility = 'visible'"
       class="newBook"
     >
       New Book
     </button>
-    <div>
+    <div id="book-list">
       <ul></ul>
       <form>
+        <div id="close" onclick="toggleVisibility()">×</div>
         <input type="text" name="title" id="title" placeholder="Title" />
         <input type="text" name="author" id="author" placeholder="Author" />
         <input

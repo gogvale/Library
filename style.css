@@ -1,3 +1,6 @@
+body {
+  background-color: rgb(87, 32, 0);
+}
 form {
   background-color: gray;
   border: solid 10px black;
@@ -22,4 +25,74 @@ form > * {
   margin-top: 0.5rem;
   height: 2.5rem;
   padding-left: 0.75em;
+}
+h1 {
+  width: 100%;
+  text-align: center;
+  background-color: rgb(134, 78, 38);
+  color: white;
+  margin: 0 0;
+  padding-top: 0.5em;
+  font-size: 32px;
+  font-weight: bold;
+  min-height: 1.5em;
+}
+#book-list {
+  max-height: 90vh;
+}
+ul {
+  display: inline-flex;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+  height: 100%;
+  margin: 0 5vw;
+}
+li {
+  width: 15vw;
+  background-color: rgb(30, 128, 0);
+  text-align: center;
+  color: rgb(245, 232, 209);
+  white-space: pre-wrap;
+  border: black 2px solid;
+  border-radius: 10px;
+  padding: 5px 5px;
+  margin: 5px 8px;
+}
+
+button {
+  border-radius: 5px;
+  font-size: 16px;
+  color: white;
+}
+.newBook {
+  position: fixed;
+  bottom: 2px;
+  right: 2px;
+  background-color: rgb(2, 138, 2);
+}
+.remove {
+  background-color: rgb(138, 22, 2);
+  font-size: 10px;
+}
+.change {
+  background-color: rgb(76, 0, 255);
+  font-size: 10px;
+}
+
+#close {
+  background-color: red;
+  color: white;
+  border: 2px solid black;
+  width: 1.2em;
+  height: 1em;
+  border-radius: 50%;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+  padding: 0 0;
+  padding-bottom: 3px;
+  position: absolute;
+  top: -25px;
+  right: -15px;
+  cursor: pointer;
 }
