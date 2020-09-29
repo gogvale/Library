@@ -1,22 +1,21 @@
-let myLibrary = [];
+let myLibrary;
+if (localStorage.getItem("books") !== null)
+  myLibrary = JSON.parse(localStorage.getItem("books"));
+else myLibrary = [];
 
+const info = (book) => {
+  return `${book.title} by ${book.author}, ${book.pages} pages, ${
+    book.read ? "read" : "not read yet"
+  }`;
+};
+const readBook = (book) => {
+  book.read = !book.read;
+};
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
-
-  this.info = () => {
-    return `${this.title} by ${this.author}, ${this.pages} pages, ${
-      this.read ? "read" : "not read yet"
-    }`;
-  };
-  this.readBook = () => {
-    this.read = !this.read;
-  };
-}
-function renderStatus(li) {
-  li.children[0];
 }
 
 function refreshBooks() {
@@ -29,7 +28,7 @@ function refreshBooks() {
     li.arrayIndex = index;
 
     p = document.createElement("p");
-    p.innerHTML = li.book.info();
+    p.innerHTML = info(li.book);
     li.appendChild(p);
 
     button1 = document.createElement("button");
@@ -37,7 +36,7 @@ function refreshBooks() {
     button1.classList.add("change");
     button1.onclick = (self) => {
       li = self.target.parentElement;
-      li.book.readBook();
+      readBook(li.book);
       refreshBooks();
     };
 
@@ -55,6 +54,8 @@ function refreshBooks() {
     li.appendChild(button2);
 
     ul.appendChild(li);
+
+    localStorage.setItem("books", JSON.stringify(myLibrary));
   });
 }
 
@@ -87,3 +88,5 @@ function addNewBook() {
 function toggleVisibility() {
   document.querySelector("form").style.visibility = "hidden";
 }
+
+refreshBooks();
